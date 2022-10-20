@@ -118,6 +118,12 @@ h1 {
   left: 0;
 }
 
+.modal .close-modal {
+  position: relative;
+  top: -30px;
+  left: 255px;
+}
+
 .modal div {
   max-width: 480px;
   background: #fff;
