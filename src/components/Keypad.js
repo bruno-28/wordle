@@ -2,44 +2,54 @@ import React from "react";
 
 export default function Keypad({ usedKeys }) {
   const keypadLetters = [
-    { key: "a" },
-    { key: "b" },
-    { key: "c" },
-    { key: "d" },
+    { key: "q" },
+    { key: "w" },
     { key: "e" },
+    { key: "r" },
+    { key: "t" },
+    { key: "y" },
+    { key: "u" },
+    { key: "i" },
+    { key: "o" },
+    { key: "p" },
+    { key: "a" },
+    { key: "s" },
+    { key: "d" },
     { key: "f" },
     { key: "g" },
     { key: "h" },
-    { key: "i" },
     { key: "j" },
     { key: "k" },
     { key: "l" },
-    { key: "m" },
-    { key: "n" },
-    { key: "o" },
-    { key: "p" },
-    { key: "q" },
-    { key: "r" },
-    { key: "s" },
-    { key: "t" },
-    { key: "u" },
-    { key: "v" },
-    { key: "w" },
-    { key: "x" },
-    { key: "y" },
     { key: "z" },
+    { key: "backspace" },
+    { key: "x" },
+    { key: "c" },
+    { key: "v" },
+    { key: "b" },
+    { key: "n" },
+    { key: "m" },
+    { key: "enter" },
   ];
 
   return (
     <div className="keypad">
       {keypadLetters &&
         keypadLetters.map((letter) => {
-          const color = usedKeys[letter.key];
-          return (
-            <div key={letter.key} className={color}>
-              {letter.key}
-            </div>
-          );
+          if (letter.key === "backspace" || letter.key === "enter") {
+            return (
+              <div key={letter.key} className="special-char">
+                {letter.key}
+              </div>
+            );
+          } else {
+            const color = usedKeys[letter.key];
+            return (
+              <div key={letter.key} className={color}>
+                {letter.key}
+              </div>
+            );
+          }
         })}
     </div>
   );
