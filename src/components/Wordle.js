@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { SolutionContext } from "../contexts/SolutionContext";
 import useWorlde from "../hooks/useWordle";
 import Grid from "./Grid";
 import Keypad from "./Keypad";
 import Modal from "./Modal";
 
-export default function Wordle({ solution }) {
+export default function Wordle() {
+  const { solution } = useContext(SolutionContext);
+  
   const { currentGuess, handleKeyup, guesses, isCorrect, turn, usedKeys } =
     useWorlde(solution);
   const [showModal, setShowModal] = useState(false);

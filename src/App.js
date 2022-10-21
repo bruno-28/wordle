@@ -1,31 +1,14 @@
-import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Wordle from "./components/Wordle";
+import SolutionContextProvider from "./contexts/SolutionContext";
 
 function App() {
-  const [solution, setSolution] = useState(null);
-
-  // useEffect(() => {
-  //   fetch("http://localhost:3001/solutions")
-  //     .then((res) => res.json())
-  //     .then((json) => {
-  //       const randomSolution = json[Math.floor(Math.random() * json.length)];
-  //       setSolution(randomSolution.word);
-  //     });
-  // }, [setSolution]);
-
-  useEffect(() => {
-    fetch("https://random-word-api.herokuapp.com/word?length=5")
-      .then((res) => res.json())
-      .then((json) => {
-        setSolution(json[0]);
-      });
-  }, [setSolution]);
-
   return (
     <div className="App">
       <Navbar />
-      {solution && <Wordle solution={solution} />}
+      <SolutionContextProvider>
+        <Wordle />
+      </SolutionContextProvider>
     </div>
   );
 }
